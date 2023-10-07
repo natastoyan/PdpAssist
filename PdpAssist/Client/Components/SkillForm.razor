@@ -1,12 +1,14 @@
 ﻿@using PdpAssist.Web.Components
+@using PdpAssist.Shared;
+@inject HttpClient Http;
 <div class="card">
 	<div class="card-header">
 		Add a skill
 	</div>
 	<div class="card-body">
 		<EditForm Model="@skill" OnValidSubmit="@HandleValidSubmit">
-			<DataAnnotationsValidator/>
-			<ValidationSummary/>
+			<DataAnnotationsValidator />
+			<ValidationSummary />
 			<div class="form-group">
 				<label for="nameInput">Name</label>
 				<InputText class="form-control" id="nameInput" @bind-Value="skill.Name"></InputText>
@@ -19,9 +21,12 @@
 				<label for="desirebleScoreInput">Desirable Score</label>
 				<InputNumber class="form-control" id="desirebleScoreInput" @bind-Value="skill.DesirebleScore"></InputNumber>
 			</div>
+			<div class="form-group">
+				<label for="timeToImproveInput">Time to grow</label>
+				<InputNumber class="form-control"  id="desirebleScoreInput" @bind-Value="skill.TimeToImprove"></InputNumber>
+			</div>
 			<div>
 				<button class="btn btn-primary" type="submit">Submit</button>
-				<label>@success</label>
 			</div>
 		</EditForm>
 	</div>
@@ -29,9 +34,13 @@
 
 @code {
 	private SkillModel skill = new SkillModel();
-	private string success = "";
-	public void HandleValidSubmit()
+
+	[Parameter]
+	public EventCallback OnSubmitCallback { get; set; }
+
+	public async Task HandleValidSubmit()
 	{
-		success = "success";
+		await Http.PostAsJsonAsync<SkillModel>("api/Skills", skill);
+		await OnSubmitCallback.InvokeAsync();
 	}
 }

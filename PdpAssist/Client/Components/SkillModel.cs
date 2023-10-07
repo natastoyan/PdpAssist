@@ -12,6 +12,8 @@ namespace PdpAssist.Web.Components
 		[Required]
 		public int DesirebleScore { get; set; }
 
+		[Required]
+		public int TimeToImprove { get; set; }
 		public IEnumerable<String> Resources { get; set; }
 	}
 }
