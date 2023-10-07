@@ -1,29 +1,61 @@
 ﻿@page "/skills"
 @using PdpAssist.Client.Components;
-<h3>Skills</h3>
+@using PdpAssist.Shared;
+@inject HttpClient Http;
 
-
-
-<table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Current Scrore</th>
-                <th>Desireble Score</th>
-            </tr>
-        </thead>
-        <tbody>
-@*            @foreach (var skill in skills)
-            {
-                <tr>
-                    <td>@skill.Name</td>
-                    <td>@skill.CurrentScore</td>
-                    <td>@skill.DesirebleScore</td>
-                </tr>
-            }*@
-        </tbody>
-</table>
-<SkillForm></SkillForm>
+<div class="row">
+	<div class="col-lg-8">
+		<div class="card">
+			<div class="card-header">
+				My skills
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Current Scrore</th>
+							<th>Desireble Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						@if (skills == null)
+						{
+							<tr><td><em>Loading...</em></td></tr>
+						}
+						else
+							@foreach(var skill in skills)
+							{
+								<tr>
+									<td>@skill.Name</td>
+									<td>@skill.CurrentScore</td>
+									<td>@skill.DesirebleScore</td>
+								</tr>
+							}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<SkillForm></SkillForm>
+	</div>
+</div>
 @code {
+	Skill[] skills;
+	protected async override Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
 
+    private async Task LoadData()
+    {
+        skills = await Http.GetFromJsonAsync<Skill[]>("api/Skills");
+        StateHasChanged();
+    }
+
+    public async void Refresh()
+    {
+        await LoadData();
+    }
 }

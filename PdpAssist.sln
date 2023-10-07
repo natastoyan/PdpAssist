@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdpAssist.Client", "PdpAssi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdpAssist.Shared", "PdpAssist\Shared\PdpAssist.Shared.csproj", "{1C4F0737-E9C0-42F1-852D-692A48EF1914}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopAssist.Server.Tests", "PopAssist.Server.Tests\PopAssist.Server.Tests.csproj", "{414408B4-F525-43F4-B82A-9211757C024D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1C4F0737-E9C0-42F1-852D-692A48EF1914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C4F0737-E9C0-42F1-852D-692A48EF1914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C4F0737-E9C0-42F1-852D-692A48EF1914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414408B4-F525-43F4-B82A-9211757C024D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414408B4-F525-43F4-B82A-9211757C024D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414408B4-F525-43F4-B82A-9211757C024D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414408B4-F525-43F4-B82A-9211757C024D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
