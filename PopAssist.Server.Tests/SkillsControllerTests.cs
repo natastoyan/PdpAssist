@@ -9,17 +9,19 @@ namespace PopAssist.Server.Tests
 {
 	public class Tests
 	{
+		MemoryRepository<Skill> _repository;
 		[SetUp]
+
 		public void Setup()
 		{
+			_repository = new MemoryRepository<Skill>();
+			_repository.Add(new Skill { Name = "Test", CurrentScore = 5, DesirebleScore = 9 });
 		}
 
 		[Test]
 		public void GetTest()
 		{
-			var repository = new MemoryRepository<Skill>();
-			repository.Add(new Skill { Name = "Test", CurrentScore = 5, DesirebleScore = 9 });
-			var controller = new SkillsController(repository);
+			var controller = new SkillsController(_repository);
 			var foo = controller.Get();
 			Assert.IsNotNull(foo);
 		}
