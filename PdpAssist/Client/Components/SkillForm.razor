@@ -1,0 +1,37 @@
+﻿@using PdpAssist.Web.Components
+<div class="card">
+	<div class="card-header">
+		Add a skill
+	</div>
+	<div class="card-body">
+		<EditForm Model="@skill" OnValidSubmit="@HandleValidSubmit">
+			<DataAnnotationsValidator/>
+			<ValidationSummary/>
+			<div class="form-group">
+				<label for="nameInput">Name</label>
+				<InputText class="form-control" id="nameInput" @bind-Value="skill.Name"></InputText>
+			</div>
+			<div class="form-group">
+				<label for="currentScoreInput">Current Score</label>
+				<InputNumber class="form-control" id="currentScoreInput" @bind-Value="skill.CurrentScore"></InputNumber>
+			</div>
+			<div class="form-group">
+				<label for="desirebleScoreInput">Desirable Score</label>
+				<InputNumber class="form-control" id="desirebleScoreInput" @bind-Value="skill.DesirebleScore"></InputNumber>
+			</div>
+			<div>
+				<button class="btn btn-primary" type="submit">Submit</button>
+				<label>@success</label>
+			</div>
+		</EditForm>
+	</div>
+</div>
+
+@code {
+	private SkillModel skill = new SkillModel();
+	private string success = "";
+	public void HandleValidSubmit()
+	{
+		success = "success";
+	}
+}
