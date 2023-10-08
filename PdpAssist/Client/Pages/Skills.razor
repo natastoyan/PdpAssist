@@ -72,11 +72,11 @@
 		StateHasChanged();
 	}
 
-	 void OnRender(DataGridRenderEventArgs<Skill> args)
-    {
-        if(args.FirstRender)
-        {
-            args.Grid.Groups.Add(new GroupDescriptor(){ Property = "Group" });
+	void OnRender(DataGridRenderEventArgs<Skill> args)
+	{
+		if(args.FirstRender)
+		{
+			args.Grid.Groups.Add(new GroupDescriptor(){ Property = "Group" });
             StateHasChanged();
         }
     }

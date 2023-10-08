@@ -1,0 +1,46 @@
+﻿@using PdpAssist.Shared;
+@inject HttpClient Http;
+
+@if(skills == null)
+{
+	<div>
+		Loading...
+	</div>
+}
+else{
+<ul class="tree">
+	<li>
+		<span>My skills</span>
+		<ul>
+			@foreach (var skillGroup in skills.GroupBy(skill => skill.Group.Name))
+			{
+				<li>
+					<span>@skillGroup.Key</span>
+					<ul>
+						@foreach (var skill in skillGroup)
+						{
+							<li>
+								<span>@skill.Name</span>
+							</li>
+						}
+					</ul>
+				</li>
+			}
+		</ul>
+	</li>
+</ul>
+}
+
+@code {
+	Skill[] skills;
+	protected async override Task OnInitializedAsync()
+	{
+		await LoadData();
+	}
+
+	private async Task LoadData()
+	{
+		skills = await Http.GetFromJsonAsync<Skill[]>("api/Skills");
+		StateHasChanged();
+	}
+}
