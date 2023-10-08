@@ -12,15 +12,15 @@
                 @switch (DialogType)
                 {
                     case ModalDialogType.Ok:
-                        <button type="button" class="btn btn-primary" @onclick=@ModalOk>OK</button>
+                        <button type="button" class="btn btn-outline-primary" @onclick=@ModalOk>OK</button>
                         break;
                     case ModalDialogType.OkCancel:
-                        <button type="button" class="btn" @onclick="@ModalCancel">Cancel</button>
-                        <button type="button" class="btn btn-primary" @onclick=@ModalOk>OK</button>
+                        <button type="button" class="btn btn-outline-secondary" @onclick="@ModalCancel">Cancel</button>
+                        <button type="button" class="btn btn-outline-primary" @onclick=@ModalOk>OK</button>
                         break;
                     case ModalDialogType.DeleteCancel:
-                        <button type="button" class="btn" @onclick="@ModalCancel">Cancel</button>
-                        <button type="button" class="btn btn-danger" @onclick=@ModalOk>Delete</button>
+                        <button type="button" class="btn btn-outline-secondary" @onclick="@ModalCancel">Cancel</button>
+                        <button type="button" class="btn btn-outline-danger" @onclick=@ModalOk>Delete</button>
                         break;
                 }
             </div>
