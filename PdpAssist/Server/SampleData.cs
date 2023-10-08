@@ -9,12 +9,16 @@ namespace PdpAssist.Server
 		{
 			var skillRepository = new MemoryRepository<Skill>();
 
-			skillRepository.Add(new Skill { Name = "Blazor", Priority = SkillPriority.Neutral, CurrentScore = 5, DesirebleScore = 10, TimeToImprove = 24 });
-			skillRepository.Add(new Skill { Name = "LINQ", Priority = SkillPriority.High, CurrentScore = 7, DesirebleScore = 10, TimeToImprove = 16 });
-			skillRepository.Add(new Skill { Name = "Patterns", Priority = SkillPriority.High, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 30 });
-			skillRepository.Add(new Skill { Name = "async/await", Priority = SkillPriority.Critical, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 40 });
-			skillRepository.Add(new Skill { Name = "JavaScript, React", Priority = SkillPriority.Low, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 40 });
-			skillRepository.Add(new Skill { Name = "Moq", Priority = SkillPriority.Critical, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 20 });
+			var codingGroup = new SkillGroup { Name = "Coding" };
+			var testingGroup = new SkillGroup { Name = "Testing"};
+			var frontGroup = new SkillGroup { Name = "Front-end" };
+			var archGroup = new SkillGroup { Name = "Architecture" };
+			skillRepository.Add(new Skill { Name = "Blazor", Group = frontGroup, Priority = SkillPriority.Neutral, CurrentScore = 5, DesirebleScore = 10, TimeToImprove = 24 });
+			skillRepository.Add(new Skill { Name = "LINQ", Group = codingGroup, Priority = SkillPriority.High, CurrentScore = 7, DesirebleScore = 10, TimeToImprove = 16 });
+			skillRepository.Add(new Skill { Name = "Patterns", Group = archGroup, Priority = SkillPriority.High, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 30 });
+			skillRepository.Add(new Skill { Name = "async/await", Group = codingGroup, Priority = SkillPriority.Critical, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 40 });
+			skillRepository.Add(new Skill { Name = "JavaScript, React", Group = frontGroup, Priority = SkillPriority.Low, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 40 });
+			skillRepository.Add(new Skill { Name = "Moq", Group = testingGroup, Priority = SkillPriority.Critical, CurrentScore = 4, DesirebleScore = 10, TimeToImprove = 20 });
 
 
 			services.AddSingleton<IRepository<Skill>>(skillRepository);

@@ -18,7 +18,8 @@ namespace PdpAssist.Server.Controllers
 		[HttpGet]
 		public IEnumerable<Skill> Get()
 		{
-			return _skillRepository.GetAll();
+			var skills = _skillRepository.GetAll();
+			return skills;
 		}
 
 		[HttpPost]
