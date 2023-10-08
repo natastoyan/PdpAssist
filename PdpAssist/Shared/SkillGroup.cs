@@ -14,5 +14,10 @@ namespace PdpAssist.Shared
 		{
 			Id = Guid.NewGuid();
 		}
+
+		public override string ToString()
+		{
+			return this.Name;
+		}
 	}
 }

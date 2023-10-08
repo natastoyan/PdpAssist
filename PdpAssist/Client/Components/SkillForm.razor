@@ -23,19 +23,16 @@
 			</div>
 			<div class="form-group">
 				<label for="timeToImproveInput">Time to grow</label>
-				<InputNumber class="form-control"  id="desirebleScoreInput" @bind-Value="skill.TimeToImprove"></InputNumber>
+				<InputNumber class="form-control" id="desirebleScoreInput" @bind-Value="skill.TimeToImprove"></InputNumber>
 			</div>
-			            <div class="form-group">
-                <label for="priorityInput">Category</label>
-                <InputSelect class="form-control" id="categoryInput" @bind-Value="skill.Priority">
-                    @{
-                        foreach (var value in Enum.GetValues(typeof(SkillPriority)))
-                        {
-                            <option value="@value">@value</option>
-                        }
-                    }
-                </InputSelect>
-            </div>
+			<div class="form-group">
+				<label for="priorityInput">Category</label>
+				<RadzenDropDown class="form-control" id="priorityInput" Data="@(Enum.GetValues(typeof(SkillPriority)).Cast<Enum>())" @bind-Value="skill.Priority"></RadzenDropDown>
+			</div>
+			<div class="form-group">
+				<label for="groupInput">Skill Group</label>
+				<RadzenDropDown class="form-control" id="groupInput" Data="@skillGroups" @bind-Value="skill.Group"></RadzenDropDown>
+			</div>
 			<div>
 				<button class="btn btn-outline-primary" type="submit">Submit</button>
 			</div>
@@ -45,6 +42,7 @@
 
 @code {
 	private SkillModel skill = new SkillModel();
+	private IEnumerable<SkillGroup> skillGroups = new List<SkillGroup>();
 
 	[Parameter]
 	public EventCallback OnSubmitCallback { get; set; }
@@ -53,5 +51,16 @@
 	{
 		await Http.PostAsJsonAsync<SkillModel>("api/Skills", skill);
 		await OnSubmitCallback.InvokeAsync();
+	}
+
+	protected async override Task OnInitializedAsync()
+	{
+		await LoadData();
+	}
+
+	private async Task LoadData()
+	{
+		skillGroups = await Http.GetFromJsonAsync<SkillGroup[]>("api/SkillGroups");
+		StateHasChanged();
 	}
 }
