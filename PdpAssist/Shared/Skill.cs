@@ -15,7 +15,7 @@ namespace PdpAssist.Shared
 		//public IEnumerable<String> Resources { get; set; }
 		public int TimeToImprove { get; set; }
 		public SkillPriority Priority { get; set; }
-	//	public SkillGroup Group { get; set; }
+		public SkillGroup Group { get; set; }
 		public Skill()
 		{
 			Id = Guid.NewGuid();
