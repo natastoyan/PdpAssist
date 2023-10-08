@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PdpAssist.Shared;
+using System.ComponentModel.DataAnnotations;
 namespace PdpAssist.Web.Components
 {
 	public class SkillModel
@@ -14,6 +15,9 @@ namespace PdpAssist.Web.Components
 
 		[Required]
 		public int TimeToImprove { get; set; }
+
+		public SkillPriority Priority { get; set; }
+
 		public IEnumerable<String> Resources { get; set; }
 	}
 }
