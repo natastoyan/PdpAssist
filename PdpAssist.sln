@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdpAssist.Server", "PdpAssist\Server\PdpAssist.Server.csproj", "{26D25B26-E575-43B5-B155-E688700D6387}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdpAssist.Server", "PdpAssist\Server\PdpAssist.Server.csproj", "{26D25B26-E575-43B5-B155-E688700D6387}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdpAssist.Client", "PdpAssist\Client\PdpAssist.Client.csproj", "{6521BEE0-FEA2-4F2D-9040-334888BDECB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdpAssist.Client", "PdpAssist\Client\PdpAssist.Client.csproj", "{6521BEE0-FEA2-4F2D-9040-334888BDECB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdpAssist.Shared", "PdpAssist\Shared\PdpAssist.Shared.csproj", "{1C4F0737-E9C0-42F1-852D-692A48EF1914}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdpAssist.Shared", "PdpAssist\Shared\PdpAssist.Shared.csproj", "{1C4F0737-E9C0-42F1-852D-692A48EF1914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopAssist.Server.Tests", "PopAssist.Server.Tests\PopAssist.Server.Tests.csproj", "{414408B4-F525-43F4-B82A-9211757C024D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopAssist.Server.Tests", "PopAssist.Server.Tests\PopAssist.Server.Tests.csproj", "{414408B4-F525-43F4-B82A-9211757C024D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
