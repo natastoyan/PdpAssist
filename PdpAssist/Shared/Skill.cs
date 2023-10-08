@@ -14,10 +14,12 @@ namespace PdpAssist.Shared
 		public int DesirebleScore { get; set; }
 		//public IEnumerable<String> Resources { get; set; }
 		public int TimeToImprove { get; set; }
-
+		public SkillPriority Priority { get; set; }
+	//	public SkillGroup Group { get; set; }
 		public Skill()
 		{
 			Id = Guid.NewGuid();
 		}
+
 	}
 }

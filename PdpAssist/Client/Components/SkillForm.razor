@@ -25,6 +25,17 @@
 				<label for="timeToImproveInput">Time to grow</label>
 				<InputNumber class="form-control"  id="desirebleScoreInput" @bind-Value="skill.TimeToImprove"></InputNumber>
 			</div>
+			            <div class="form-group">
+                <label for="priorityInput">Category</label>
+                <InputSelect class="form-control" id="categoryInput" @bind-Value="skill.Priority">
+                    @{
+                        foreach (var value in Enum.GetValues(typeof(SkillPriority)))
+                        {
+                            <option value="@value">@value</option>
+                        }
+                    }
+                </InputSelect>
+            </div>
 			<div>
 				<button class="btn btn-outline-primary" type="submit">Submit</button>
 			</div>
