@@ -10,41 +10,27 @@
 				My skills
 			</div>
 			<div class="card-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th class="text-center">Priority</th>
-							<th>Current Scrore</th>
-							<th>Desireble Score</th>
-							<th>Time to grow</th>
-							<th>&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody>
-						@if (skills == null)
-						{
-							<tr><td><em>Loading...</em></td></tr>
-						}
-						else
-							@foreach (var skill in skills)
-							{
-								<tr>
-									<td>@skill.Name</td>
-									<td class="text-center"><span class="dot @skill.Priority.ToString().ToLower()"></span></td>
-									<td>@skill.CurrentScore</td>
-									<td>@skill.DesirebleScore</td>
-									<td>@skill.TimeToImprove hours</td>
-									<td>
-										<button type="button" class="btn btn-outline-danger btn-sm" @onclick="() =>
+				<RadzenDataGrid AllowGrouping="true" Data="@skills" TItem="Skill" Render="@OnRender">
+					<Columns>
+						<RadzenDataGridColumn TItem="Skill" Property="Name" Title="Name" Frozen="true"/>
+						<RadzenDataGridColumn TItem="Skill" Property="Priority" Title="Priority">
+							<Template Context="skill">
+								<span class="dot @skill.Priority.ToString().ToLower()"/>
+							</Template>
+						</RadzenDataGridColumn>
+						<RadzenDataGridColumn TItem="Skill" Property="CurrentScore" Title="Current Score"/>
+						<RadzenDataGridColumn TItem="Skill" Property="DesirebleScore" Title="Desireble Score"/>
+						<RadzenDataGridColumn TItem="Skill" Property="TimeToImprove" Title="Time To Improve"/>
+						<RadzenDataGridColumn TItem="Skill" Property="" Title="">
+							<Template Context="skill">
+								<button type="button" class="btn btn-outline-danger btn-sm" @onclick="() =>
 										OpenDeleteDialog(skill)">
 											Delete
 										</button>
-									</td>
-								</tr>
-							}
-					</tbody>
-				</table>
+							</Template>
+						</RadzenDataGridColumn>
+					</Columns>
+				</RadzenDataGrid>
 			</div>
 		</div>
 	</div>
@@ -85,6 +71,15 @@
 		_skillToDelete = skill;
 		StateHasChanged();
 	}
+
+	 void OnRender(DataGridRenderEventArgs<Skill> args)
+    {
+        if(args.FirstRender)
+        {
+            args.Grid.Groups.Add(new GroupDescriptor(){ Property = "Group" });
+            StateHasChanged();
+        }
+    }
 	protected async override Task OnInitializedAsync()
 	{
 		await LoadData();
