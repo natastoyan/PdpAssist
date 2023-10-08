@@ -2,7 +2,7 @@
 @using PdpAssist.Client.Components;
 @using PdpAssist.Shared;
 @inject HttpClient Http;
-
+<PageTitle>SkillPlant</PageTitle>
 <div class="row">
 	<div class="col-lg-8">
 		<div class="card">
@@ -33,7 +33,7 @@
 									<td>@skill.CurrentScore</td>
 									<td>@skill.DesirebleScore</td>
 									<td>@skill.TimeToImprove hours</td>
-                                    <td><button type="button" class="btn btn-danger btn-sm" @onclick="() => 
+                                    <td><button type="button" class="btn btn-outline-danger btn-sm" @onclick="() => 
 										OpenDeleteDialog(skill)">Delete</button></td>
 								</tr>
 							}
