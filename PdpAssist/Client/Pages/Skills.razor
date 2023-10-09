@@ -10,7 +10,7 @@
 				My skills
 			</div>
 			<div class="card-body">
-				<RadzenDataGrid AllowGrouping="true" Data="@skills" TItem="Skill" Render="@OnRender">
+				<RadzenDataGrid AllowGrouping="false" Data="@skills" TItem="Skill" Render="@OnRender">
 					<Columns>
 						<RadzenDataGridColumn TItem="Skill" Property="Name" Title="Name" Frozen="true"/>
 						<RadzenDataGridColumn TItem="Skill" Property="Priority" Title="Priority">
@@ -74,11 +74,11 @@
 
 	void OnRender(DataGridRenderEventArgs<Skill> args)
 	{
-		if(args.FirstRender)
-		{
-			args.Grid.Groups.Add(new GroupDescriptor(){ Property = "Group" });
-            StateHasChanged();
-        }
+		//if(args.FirstRender)
+		//{
+		//	args.Grid.Groups.Add(new GroupDescriptor(){ Property = "Group" });
+  //          StateHasChanged();
+  //      }
     }
 	protected async override Task OnInitializedAsync()
 	{
